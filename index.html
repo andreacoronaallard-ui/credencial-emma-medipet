@@ -1,527 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Credencial MediPet - Emma</title>
-  <style>
-    :root{
-      --blue:#284a78;
-      --blue-dark:#1f3a5f;
-      --orange:#eba85a;
-      --cream:#eef2e7;
-      --text:#122033;
-      --muted:#7a8592;
-      --line:#dfc19c;
-      --white:#ffffff;
-      --bg:#f3f4f6;
-      --soft:#eceef1;
-      --soft-2:#e2e5ea;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediPet Wallet</title>
 
-    *{ box-sizing:border-box; }
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#eef2f5;
+  display:flex;
+  justify-content:center;
+}
 
-    body{
-      margin:0;
-      background:#ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      color:var(--text);
-    }
+.card{
+  width:820px;
+  border-radius:25px;
+  overflow:hidden;
+  background:#f4f5f6;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
 
-    .page{
-      width:825px;
-      margin:0 auto;
-      background:#fff;
-    }
+/* HEADER */
+.header{
+  background:#284a78;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .card{
-      margin:6px;
-      border-radius:28px;
-      overflow:hidden;
-      background:var(--bg);
-      box-shadow:0 8px 24px rgba(0,0,0,.08);
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .top{
-      background:var(--blue);
-      min-height:123px;
-      padding:18px 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-    }
+.brand img{
+  width:60px;
+  background:white;
+  border-radius:12px;
+  padding:5px;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
+.brand h1{
+  color:white;
+  margin:0;
+}
 
-    .brand img{
-      width:64px;
-      height:64px;
-      object-fit:contain;
-      background:#fff;
-      border-radius:14px;
-      padding:6px;
-      flex-shrink:0;
-    }
+.brand span{color:#eba85a;}
 
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
+.badge{
+  padding:8px 15px;
+  border-radius:20px;
+  font-weight:bold;
+}
 
-    .brand-title{
-      font-size:28px;
-      font-weight:900;
-      color:#fff;
-      line-height:1;
-      letter-spacing:.2px;
-    }
+.status-pending{
+  background:#fff4d6;
+  color:#9a6700;
+}
 
-    .brand-title span{
-      color:var(--orange);
-    }
+.status-active{
+  background:#e7f5ea;
+  color:#2c6b2b;
+}
 
-    .brand-sub{
-      margin-top:4px;
-      color:#e6edf8;
-      font-size:11px;
-      letter-spacing:2.7px;
-      text-transform:uppercase;
-    }
+.policy{
+  background:#eba85a;
+  color:white;
+  padding:10px;
+  border-radius:15px;
+  margin-top:5px;
+  text-decoration:none;
+  display:inline-block;
+}
 
-    .top-right{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
-    }
+/* CONTENT */
+.content{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:20px;
+  padding:20px;
+}
 
-    .badge{
-      display:inline-block;
-      background:var(--cream);
-      color:#2c6b2b;
-      font-size:14px;
-      font-weight:700;
-      padding:10px 18px;
-      border-radius:999px;
-      line-height:1;
-    }
+.photo img{
+  width:100%;
+  border-radius:20px;
+}
 
-    .policy-link{
-      display:block;
-      min-width:270px;
-      background:var(--orange);
-      color:#fff;
-      text-decoration:none;
-      border-radius:18px;
-      padding:14px 16px;
-      transition:.18s ease;
-    }
+h2{
+  font-size:60px;
+  margin:0;
+}
 
-    .policy-link:hover{
-      transform:translateY(-1px);
-      filter:brightness(1.02);
-    }
+.label{
+  color:#777;
+  margin-top:10px;
+}
 
-    .policy-label{
-      font-size:16px;
-      font-weight:800;
-      margin-bottom:4px;
-    }
+.owner{
+  font-weight:bold;
+  color:#284a78;
+}
 
-    .policy-number{
-      font-size:18px;
-      font-weight:800;
-      line-height:1.2;
-    }
+/* MINI */
+.mini{
+  display:inline-block;
+  background:#eaecef;
+  padding:10px;
+  margin:5px;
+  border-radius:10px;
+  font-size:14px;
+}
 
-    .content{
-      padding:20px 24px 20px;
-      display:grid;
-      grid-template-columns:245px 1fr;
-      gap:22px;
-      align-items:start;
-      background:var(--bg);
-    }
+/* BOTÓN PAGO */
+.pay-button{
+  display:block;
+  margin-top:10px;
+  background:#2e7d82;
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:bold;
+}
 
-    .photo-box{
-      height:262px;
-      border-radius:24px;
-      background:#e9ecef;
-      border:1px solid #dde2e8;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
+/* FOOTER */
+.bottom{
+  display:grid;
+  grid-template-columns:1fr 1fr 120px;
+  background:linear-gradient(90deg,#eb9346,#2e7d82);
+  padding:15px;
+  color:white;
+  align-items:center;
+}
 
-    .photo-box img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
-    }
+.qr{
+  background:white;
+  padding:5px;
+  border-radius:10px;
+  animation:glow 2.5s infinite;
+}
 
-    .info h1{
-      margin:0;
-      font-size:62px;
-      line-height:.95;
-      font-weight:900;
-      color:#0d1320;
-      letter-spacing:.3px;
-    }
+.qr img{
+  width:100%;
+}
 
-    .breed{
-      margin-top:8px;
-      font-size:20px;
-      font-weight:700;
-      color:#1b2a3d;
-    }
+@keyframes glow{
+  0%{box-shadow:0 0 0 rgba(235,168,90,0);}
+  50%{box-shadow:0 0 15px rgba(235,168,90,.4);}
+  100%{box-shadow:0 0 0 rgba(235,168,90,0);}
+}
 
-    .label{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:13px;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-    }
+.note{
+  text-align:center;
+  font-size:12px;
+  margin-top:5px;
+}
+</style>
 
-    .owner{
-      margin-top:4px;
-      font-size:22px;
-      font-weight:800;
-      color:var(--blue-dark);
-    }
-
-    .mini-cards{
-      margin-top:16px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .mini{
-      min-width:105px;
-      background:var(--soft);
-      border:1px solid var(--soft-2);
-      border-radius:14px;
-      padding:10px 12px 9px;
-    }
-
-    .mini .k{
-      font-size:11px;
-      color:#74808d;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:4px;
-    }
-
-    .mini .v{
-      font-size:15px;
-      font-weight:800;
-      color:#142033;
-    }
-
-    .coverage{
-      margin-top:20px;
-      background:transparent;
-      border:2px solid var(--line);
-      border-radius:22px;
-      padding:28px 12px 14px;
-      position:relative;
-    }
-
-    .coverage-title{
-      position:absolute;
-      top:-14px;
-      left:14px;
-      background:var(--orange);
-      color:#fff;
-      font-weight:800;
-      font-size:16px;
-      border-radius:999px;
-      padding:9px 16px;
-      line-height:1;
-    }
-
-    .coverage-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-    }
-
-    .c-item{
-      text-align:center;
-      padding:8px 10px 4px;
-      border-right:1px solid #dcc5aa;
-    }
-
-    .c-item:last-child{
-      border-right:none;
-    }
-
-    .c-icon{
-      font-size:34px;
-      line-height:1;
-      margin-bottom:8px;
-      color:#355f94;
-    }
-
-    .c-title{
-      font-size:16px;
-      font-weight:800;
-      color:#163762;
-      margin-bottom:4px;
-    }
-
-    .c-desc{
-      font-size:12px;
-      line-height:1.32;
-      color:#556170;
-      max-width:120px;
-      margin:0 auto;
-    }
-
-    .bottom{
-      background:linear-gradient(90deg, #eb9346 0%, #d5a35d 35%, #4d8887 72%, #2e7d82 100%);
-      min-height:155px;
-      padding:14px 24px;
-      display:grid;
-      grid-template-columns:1fr 1.2fr 118px;
-      align-items:center;
-      gap:14px;
-    }
-
-    .contact{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:#fff;
-      text-decoration:none;
-    }
-
-    .contact:hover{
-      opacity:.96;
-    }
-
-    .contact-icon{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:2px solid rgba(255,255,255,.86);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:21px;
-      flex-shrink:0;
-    }
-
-    .contact small{
-      display:block;
-      font-size:12px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      font-weight:800;
-      opacity:.95;
-      margin-bottom:3px;
-    }
-
-    .contact strong{
-      display:block;
-      font-size:18px;
-      font-weight:800;
-      line-height:1.1;
-    }
-
-    .qr-link{
-      display:block;
-      text-decoration:none;
-      color:#111;
-      background:#fff;
-      border-radius:14px;
-      padding:6px;
-      transition:.18s ease;
-    }
-
-    .qr-link:hover{
-      transform:scale(1.02);
-    }
-
-    .qr-link img{
-      width:100%;
-      display:block;
-      border-radius:10px;
-    }
-
-    .qr-note{
-      font-size:10px;
-      line-height:1.2;
-      text-align:center;
-      font-weight:700;
-      margin-top:4px;
-      color:#243241;
-    }
-
-    .footer{
-      background:var(--bg);
-      text-align:center;
-      font-size:13px;
-      color:#1d2430;
-      padding:10px 10px 14px;
-    }
-
-    @media (max-width: 860px){
-      .page{
-        width:100%;
-      }
-      .card{
-        margin:0;
-        border-radius:0;
-      }
-      .content{
-        grid-template-columns:1fr;
-      }
-      .coverage-grid{
-        grid-template-columns:repeat(2,1fr);
-        row-gap:12px;
-      }
-      .c-item:nth-child(2){
-        border-right:none;
-      }
-      .bottom{
-        grid-template-columns:1fr;
-      }
-      .top{
-        flex-direction:column;
-        gap:14px;
-      }
-      .top-right{
-        align-items:flex-start;
-      }
-    }
-  </style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="card">
 
-      <div class="top">
-        <div class="brand">
-          <img src="https://lh3.googleusercontent.com/d/1uZoXweyZOLxWUCflHuNhFiOj3oNuHyeB" alt="MediPet">
-          <div class="brand-text">
-            <div class="brand-title">Medi<span>Pet</span></div>
-            <div class="brand-sub">Seguro para mascotas</div>
-          </div>
-        </div>
+<div class="card">
 
-        <div class="top-right">
-          <div class="badge">Póliza activa</div>
+<!-- HEADER -->
+<div class="header">
+  <div class="brand">
+    <img src="https://lh3.googleusercontent.com/d/1uZoXweyZOLxWUCflHuNhFiOj3oNuHyeB">
+    <h1>Medi<span>Pet</span></h1>
+  </div>
 
-          <a class="policy-link" href="https://drive.google.com/file/d/1o_p7K7KXZKSo4VEtWiPlm6LvE8BU-z-o/view" target="_blank">
-            <div class="policy-label">PÓLIZA:</div>
-            <div class="policy-number">01-039-07036852-0000-01</div>
-          </a>
-        </div>
-      </div>
+  <div>
+    <div id="status" class="badge status-pending">Pendiente de pago</div><br>
 
-      <div class="content">
-        <div class="photo-box">
-          <img src="https://lh3.googleusercontent.com/d/1NM1rtfZN8bTyKQCbFUKFQImD_ob1ROVv" alt="Emma">
-        </div>
+    <a id="policyLink" class="policy" target="_blank">
+      Póliza: <span id="poliza">-</span>
+    </a>
 
-        <div class="info">
-          <h1>EMMA</h1>
-          <div class="breed">Dachshund</div>
+    <a id="payButton" class="pay-button" target="_blank">
+      Realizar pago
+    </a>
+  </div>
+</div>
 
-          <div class="label">Contratante</div>
-          <div class="owner">Gerardo Mathus Gómez Sandoval</div>
+<!-- CONTENT -->
+<div class="content">
 
-          <div class="mini-cards">
-            <div class="mini">
-              <div class="k">Sexo</div>
-              <div class="v">Hembra</div>
-            </div>
-            <div class="mini">
-              <div class="k">Color</div>
-              <div class="v">Café</div>
-            </div>
-            <div class="mini">
-              <div class="k">Edad</div>
-              <div class="v">3 años</div>
-            </div>
-          </div>
+  <div class="photo">
+    <img id="foto" src="https://lh3.googleusercontent.com/d/1NM1rtfZN8bTyKQCbFUKFQImD_ob1ROVv">
+  </div>
 
-          <div class="coverage">
-            <div class="coverage-title">Coberturas básicas</div>
+  <div>
+    <h2 id="mascota">MASCOTA</h2>
+    <div id="raza">Raza</div>
 
-            <div class="coverage-grid">
-              <div class="c-item">
-                <div class="c-icon">➕</div>
-                <div class="c-title">Accidentes</div>
-                <div class="c-desc">
-                  Atropellamiento, caídas, ataques, ingestión de cuerpos extraños y golpe de calor.
-                </div>
-              </div>
+    <div class="label">Asegurado</div>
+    <div id="asegurado" class="owner">Nombre</div>
 
-              <div class="c-item">
-                <div class="c-icon">🩺</div>
-                <div class="c-title">Enfermedades</div>
-                <div class="c-desc">
-                  Gastos médicos por enfermedad vía reembolso, sujeto a tiempos de espera.
-                </div>
-              </div>
-
-              <div class="c-item">
-                <div class="c-icon">🏥</div>
-                <div class="c-title">Gastos médicos</div>
-                <div class="c-desc">
-                  Hasta $25,000 para honorarios, estudios, radiografías y medicamentos.
-                </div>
-              </div>
-
-              <div class="c-item">
-                <div class="c-icon">🛡️</div>
-                <div class="c-title">Resp. civil</div>
-                <div class="c-desc">
-                  Hasta $50,000 por daños a terceros y gastos funerarios hasta $1,500.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bottom">
-        <a class="contact" href="https://wa.me/message/4BZFEGQSTZVNJ1" target="_blank">
-          <div class="contact-icon">☎</div>
-          <div>
-            <small>Asistencias</small>
-            <strong>55 4161 6998</strong>
-          </div>
-        </a>
-
-        <a class="contact" href="https://wa.me/message/4BZFEGQSTZVNJ1" target="_blank">
-          <div class="contact-icon">⚠</div>
-          <div>
-            <small>Reporte de siniestros</small>
-            <strong>55 4161 6998</strong>
-          </div>
-        </a>
-
-        <a class="qr-link" href="https://wa.me/message/4BZFEGQSTZVNJ1" target="_blank">
-          <img src="https://lh3.googleusercontent.com/d/1SyTqBcmTM7KDAoVpVYLdV_A1avkWtcvx" alt="QR Emma">
-          <div class="qr-note">Escanea o da click para reportar</div>
-        </a>
-      </div>
-
-      <div class="footer">
-        Presenta esta credencial en caso de atención veterinaria.
-      </div>
-
+    <div>
+      <div class="mini">🐾 <span id="especie">-</span></div>
+      <div class="mini">Sexo: <span id="sexo">-</span></div>
+      <div class="mini">Color: <span id="color">-</span></div>
+      <div class="mini">Edad: <span id="edad">-</span></div>
     </div>
   </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="bottom">
+
+  <div>📞 Asistencias<br>55 4161 6998</div>
+  <div>⚠ Reporte<br>55 4161 6998</div>
+
+  <div class="qr">
+    <a href="https://wa.me/message/4BZFEGQSTZVNJ1" target="_blank">
+      <img src="https://lh3.googleusercontent.com/d/1SyTqBcmTM7KDAoVpVYLdV_A1avkWtcvx">
+    </a>
+    <div class="note">Escanea o da click para reportar</div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+// VARIABLES
+const mascota = params.get("mascota");
+const especie = params.get("especie");
+const raza = params.get("raza");
+const asegurado = params.get("asegurado");
+const sexo = params.get("sexo");
+const color = params.get("color");
+const edad = params.get("edad");
+const poliza = params.get("poliza");
+const foto = params.get("foto");
+const pdf = params.get("pdf");
+const estatus = params.get("estatus");
+
+// SET DATA
+if(mascota){
+  document.getElementById("mascota").innerText = mascota.toUpperCase();
+  document.title = "MediPet " + mascota;
+}
+
+if(raza) document.getElementById("raza").innerText = raza;
+if(asegurado) document.getElementById("asegurado").innerText = asegurado;
+if(sexo) document.getElementById("sexo").innerText = sexo;
+if(color) document.getElementById("color").innerText = color;
+if(edad) document.getElementById("edad").innerText = edad;
+if(poliza) document.getElementById("poliza").innerText = poliza;
+
+if(foto) document.getElementById("foto").src = foto;
+
+if(pdf) document.getElementById("policyLink").href = pdf;
+
+// ESPECIE
+if(especie){
+  let e = especie.toLowerCase();
+  document.getElementById("especie").innerText = (e === "gato") ? "🐱 Gato" : "🐶 Perro";
+}
+
+// ESTATUS
+const statusEl = document.getElementById("status");
+const payBtn = document.getElementById("payButton");
+
+if(estatus === "activa"){
+  statusEl.innerText = "Póliza activa";
+  statusEl.classList.remove("status-pending");
+  statusEl.classList.add("status-active");
+  payBtn.style.display = "none";
+}else{
+  payBtn.href = "https://ews.gmx.com.mx/CO-DIG/pagoenlinea.aspx";
+}
+</script>
+
 </body>
 </html>
